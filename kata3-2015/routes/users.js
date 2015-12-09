@@ -15,11 +15,11 @@ module.exports = {
             var body, code, info;
             if (error) {
                 code = 500;
-                info = error;
+                info = http.statusCode[500] + ': ' + error;
                 console.log("not saved: " + error);
             } else {
                 code = 200;
-                info = 'Success';
+                info = http.statusCode[200];
                 console.log("saved: " + user.name);
             }
             body = JSON.stringify({

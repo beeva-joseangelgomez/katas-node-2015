@@ -19,3 +19,5 @@ Este ejercicio esta propuesto para usar el módulo events
     * Se llamará al método all, el cuál devolverá los dos usuarios creados
     * Se llamará al método erase de la clase User dos veces con los ids 1 y 20
     * Se llamará al método all, el cuál devolverá el primer usuario creado
+
+Ejecutar el fichero app.js desde consola: node app.js
