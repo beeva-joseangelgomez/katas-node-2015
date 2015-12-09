@@ -50,8 +50,9 @@ User.prototype.onSaved = function (callback) {
     this.on(SAVED_EVENT, callback);
 };
 
-User.prototype.erase = function (id) {
-    that.emit(ERASE_EVENT, error, id);
+User.prototype.erase = function (name) {
+    console.log('Debería eliminarse el registro con nombre: ' + name);
+    that.emit(ERASE_EVENT, name);
 };
 
 User.prototype.onErase = function (callback) {
