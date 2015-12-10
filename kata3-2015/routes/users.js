@@ -1,25 +1,26 @@
 'use strict';
 
+const http = require("http");
 const User = require("../User");
 
 
 module.exports = {
 
-    'GET': function (req, res) {
+    'GET': (req, res) => {
         let user = new User();
         user.all(res);
     },
-    'POST': function (req, res) {
+    'POST': (req, res) => {
         let user = new User();
-        user.onSaved(function (error, user) {
+        user.onSaved((error, user) => {
             var body, code, info;
             if (error) {
                 code = 500;
-                info = http.statusCode[500] + ': ' + error;
+                info = http.STATUS_CODES[500] + ': ' + error;
                 console.log("not saved: " + error);
             } else {
                 code = 200;
-                info = http.statusCode[200];
+                info = http.STATUS_CODES[200];
                 console.log("saved: " + user.name);
             }
             body = JSON.stringify({
@@ -32,24 +33,16 @@ module.exports = {
                 'Content-Length': body.length,
                 'Content-Type': 'application/json'
             });
-            res.write(body, function () {
-                res.end();
-            });
-            res.on('error', function (error) {
-                console.log(error);
-            });
-        });
-        let data = '';
-        req.on('data', function (chunk) {
-            data += chunk;
-            console.log("data: " + data);
+            res.write(body, () => res.end());
+            res.on('error', error => console.log(error));
         });
 
-        req.on('end', function () {
-            user.save(JSON.parse(data));
-        });
+        let data = '';
+        req.on('data', chunk => data += chunk);
+
+        req.on('end', () => user.save(JSON.parse(data)));
     },
-    'DELETE': function (req, res) {
+    'DELETE': (req, res) => {
 
     }
 

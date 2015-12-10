@@ -3,10 +3,9 @@
 const User = require("./User");
 var user = new User();
 
-user.onSaved(function (user) {
-    console.log("saved: " + user.name + " (" + user.id + ")");
-});
-user.onErase(function (error, id) {
+user.onSaved((user) => console.log("saved: " + user.name + " (" + user.id + ")"));
+
+user.onErase((error, id) => {
     if (error) {
         console.log("error on erase: " + error);
     } else {

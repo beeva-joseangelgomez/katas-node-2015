@@ -3,14 +3,15 @@
 const User = require("./User");
 var user = new User();
 
-user.onSaved(function (error, user) {
+user.onSaved((error, user) => {
     if (error) {
         console.log("not saved: " + error);
     } else {
         console.log("saved: " + user.name);
     }
 });
-user.onErase(function (error, id) {
+
+user.onErase((error, id) => {
     if (error) {
         console.log("error on erase: " + error);
     } else {
@@ -18,8 +19,8 @@ user.onErase(function (error, id) {
     }
 });
 
-user.save({name: "Jane Doe" + i, occupation: "manager"});
-user.save({name: "John Jacob" + i, occupation: "developer"});
+user.save({name: "Jane Doe", occupation: "manager"});
+user.save({name: "John Jacob", occupation: "developer"});
 
 user.all();
 user.compress();
