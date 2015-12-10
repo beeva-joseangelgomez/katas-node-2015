@@ -8,6 +8,7 @@ const UserModel = require("./UserModel.js");
 
 const SAVED_EVENT = 'saved';
 const ERASE_EVENT = 'erase';
+const READED_EVENT = 'readed';
 var that;
 
 function User() {
@@ -50,18 +51,29 @@ User.prototype.onSaved = function (callback) {
     this.on(SAVED_EVENT, callback);
 };
 
-User.prototype.erase = function (name) {
-    console.log('Debería eliminarse el registro con nombre: ' + name);
-    that.emit(ERASE_EVENT, name);
+User.prototype.erase = function (id) {
+    that.emit(ERASE_EVENT, id);
 };
 
 User.prototype.onErase = function (callback) {
     this.on(ERASE_EVENT, callback);
 };
 
-User.prototype.all = function (out) {
-    let input = fs.createReadStream(this.file);
-    input.pipe(out);
+User.prototype.all = function () {
+    var data = [];
+    let readable = fs.createReadStream(this.file);
+    var readline = require('readline');
+    var rl = readline.createInterface({input: readable});
+    rl.on('line', function (line) {
+        data.push(JSON.parse(line));
+    });
+    rl.on('close', () => {
+        that.emit(READED_EVENT, null, data);
+    });
+};
+
+User.prototype.onReaded = function (callback) {
+    this.on(READED_EVENT, callback);
 };
 
 User.prototype.compress = function () {
