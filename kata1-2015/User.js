@@ -30,7 +30,7 @@ User.prototype.onSaved = function (callback) {
 
 User.prototype.erase = function (id) {
     if (database.users[id]) {
-        database.users.pop(id);
+        database.users.splice(id, 1);
         this.emit(ERASE_EVENT, null, id);
     } else {
         let error = new Error('ID not found');

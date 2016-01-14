@@ -3,7 +3,7 @@
 const User = require("./User");
 var user = new User();
 
-user.onSaved((user) => console.log("saved: " + user.name + " (" + user.id + ")"));
+user.onSaved((user) => console.log("saved: " + user.name ));
 
 user.onErase((error, id) => {
     if (error) {
@@ -18,7 +18,7 @@ user.save({ name: "John Jacob", occupation: "developer" });
 
 user.all();
 
-user.erase(2);
+user.erase(5);
 user.erase(20);
 
 user.all();

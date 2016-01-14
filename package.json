@@ -2,7 +2,7 @@
   "name": "katas-node-2015",
   "version": "0.0.1",
   "dependencies": {
-    "express": "^4.13.3",
+    "express": "4.13.3",
     "body-parser": "1.14.1",
     "compression": "1.6.0"
   },
