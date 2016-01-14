@@ -6,7 +6,7 @@ Aprovechando el ejercicio anterior, vamos a:
       datos leídos formateados correctamente a JSON. (Ayuda: el modulo readline de Node.js puede ser de ayuda) 
 * En el app.js:
     * Importar las librerías Express 4.x, body-parser v1.14.1 y compression v1.6.0
-    * Crear una instancia de exress e inyectarla en el http.createServer
+    * Crear una instancia de express e inyectarla en el http.createServer
     * Inyectar un middleware con bodyParser.json()
     * Inyectar un middleware con compression()
     * Crear un middleware de aplicación, que sirva para todos los endpoints, para que imprima en consola el método HTTP y 
@@ -17,4 +17,4 @@ Aprovechando el ejercicio anterior, vamos a:
     * Crear un middleware de aplicación para el método POST y montarlo en el endpoint /users. La lógica que había en el 
       método 'POST' del fichero routes/users.js del ejercicio anterior, ponerla en este middleware. Modificar lo necesario 
       para que esto funcione
-* Borrar el directorio routes, con todo su contenido, y el fichero router.js, ya que no serán necesrios 
+* Borrar el directorio routes, con todo su contenido, y el fichero router.js, ya que no serán necesarios

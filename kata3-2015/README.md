@@ -5,7 +5,7 @@ Se pretende crear un servidor http. Para ello:
 * Crear una carpeta y llamarla routes. Dentro, crear un fichero con nombre users.js.
     * Aquí vamos a crear la lógica de negocio
     * Crearemos dos funciones con nombres 'GET' y 'POST'
-        * 'GET': recibe como parámetro una request y un response. Llamar a users.all para recuperar los datos de la 
+        * 'GET': recibe como parámetro una request y un response. Llamar a user.all para recuperar los datos de la
           base de datos y los devolveremos en la response
         * 'POST': recibe como parámetro una request y un response. Llamar a user.save con los datos que se reciben en la request.
           Capturar el evento de guardado y dependiendo del 
